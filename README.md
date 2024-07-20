@@ -1,4 +1,4 @@
-# Prometheus+Grafana Docker-Compose Installation
+# Prometheus+Grafana Docker-Compose Installation with Node Exporter
 
 This is my personal installation for Prometheus and Grafana using Docker containers.
 You can directly clone this repo and run `docker-compose up -d` in the same directory where the docker-compose.yml file is located (You may need to do some adjustments for it to work properly).
@@ -79,3 +79,11 @@ sudo systemctl restart node_exporter.service
 sudo systemctl status node_exporter.service
 curl http://localhost:9100/metrics
 ```
+
+## Automatic Installation
+
+You can also look at the `auto.sh` script to automatically install this set up in a matter of seconds. Verify the script because you may want to do changes like changing the version or architecture of the Node Exporter release. Remember to run the script with sudo privileges and to grant executable permissions to the file using `chmod +x auto.sh`.
+
+## Rollback
+
+To rollback the changes done in your system you can either follow in reverse order the manual installation steps or use the `rollback.sh` script also included in the repository. Remember to run the script with sudo privileges and to grant executable permissions to the file using `chmod +x rollback.sh`.
