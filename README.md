@@ -45,7 +45,8 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.8.2/node_e
 ```
 6. Your downloaded file will be comprissed. Extract the files using `tar -xvzf node_exporter-1.8.2.linux-amd64.tar.gz`
 7. Once you download the files, move inside the extracted directory and move the binary file to `/usr/local/bin`. This is not mandatory, but it helps mantain organized everything in your computer.
-8. Create a dedicated user for Node Exporter.
+8. Create your prometheus configuration file in `./prometehus/prometheus.yml`, relative to where your `docker-compose.yml` file is located. You may want to refer to [Configuring Prometheus Section](https://prometheus.io/docs/introduction/first_steps/#configuring-prometheus) in the Prometheus documentation to know how to write this file. You can also refer to the `prometheus.yml` in this repository.
+9. Create a dedicated user for Node Exporter.
 ```bash
 sudo useradd --no-create-home --shell /bin/false node_exporter
 sudo chown node_exporter:node_exporter /usr/local/bin/node_exporter
@@ -83,6 +84,8 @@ curl http://localhost:9100/metrics
 ## Automatic Installation
 
 You can also look at the `auto.sh` script to automatically install this set up in a matter of seconds. Verify the script because you may want to do changes like changing the version or architecture of the Node Exporter release. Remember to run the script with sudo privileges and to grant executable permissions to the file using `chmod +x auto.sh`.
+
+**Note**: The automatic installation does not create the `prometheus.yml` file.
 
 ## Rollback
 
